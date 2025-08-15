@@ -54,7 +54,7 @@ hostPorts:
     port: 5443
 
 service:
-  port: 3000
+  port: 80
   type: ClusterIP
 
 
