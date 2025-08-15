@@ -5,7 +5,7 @@ metadata:
   name: {{ include "adguard-home.fullname" . }}
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   volumeMode: Filesystem
   resources:
     requests:
