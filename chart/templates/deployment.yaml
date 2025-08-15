@@ -52,7 +52,7 @@ spec:
           #     port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- with .Values.persistence }}
+          {{- if .Values.persistence.enabled }}
           volumeMounts:
             - name: adguard-data
               mountPath: /opt/adguard
@@ -68,10 +68,10 @@ spec:
       {{- with .Values.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
-      {{- with .Values.persistence }}
+      {{- end }}
+      {{- if .Values.persistence.enabled }}
       volumes:
         - name: adguard-data
           persistentVolumeClaim:
             claimName: {{ include "adguard-home.fullname" . }}
-      {{- end }}
       {{- end }}
